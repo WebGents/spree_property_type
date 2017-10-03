@@ -1,0 +1,16 @@
+.advanced-product-properties                                                  {
+  .property-types-wrapper                                                     { display: flex;
+    .property-type                                                            { flex: 1 0 240px; padding: 0 8rem;
+      h3.product-property-type-title                                          { //border-bottom: 1px solid #000;
+                                                                                margin-bottom: 10px; padding-bottom: 10px;
+                                                                                font-size: 20px;font-weight: 200;
+                                                                                color: #bbb;
+      }
+      ul.properties-list                                                      { padding: 0; margin: 0;
+        li.property                                                           { list-style: none; margin-bottom: 20px;
+          .property-label                                                     { text-transform: capitalize; }
+        }
+      }
+    }
+  }
+}

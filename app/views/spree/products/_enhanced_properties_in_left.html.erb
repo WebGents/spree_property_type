@@ -1,64 +1,30 @@
-<div data-hook="product_properties">
+<div data-hook="product_properties" class="advanced-product-properties">
 
   <% Spree::PROPERTIES_LEFT.each do |show_type| %>
     <% unless @product_properties.hash_for(show_type).empty? %>
-      <% for title in @product_properties.hash_for(show_type).keys %>
 
-        <h6 class="product-section-title"><%= title %></h6>
+      <div class="property-types-wrapper">
 
-        <% if show_type == Spree::PROPERTY_SHOW_LEFT_NORMAL %>
+        <% for title in @product_properties.hash_for(show_type).keys %>
 
-          <table id="product-properties-<%=title.downcase.underscore %>" class="table-display" data-hook width="100%">
-            <tbody>
-            <% for product_property in @product_properties.hash_for(show_type)[title] %>
-              <% css_class = cycle('even', 'odd') %>
-              <tr class="<%= css_class %>">
-                <td><%= product_property.property.presentation %></td>
-                <td class="derecha"><%= product_property.value %></td>
-              </tr>
-            <% end %>
-            </tbody>
-          </table>
+          <div class="property-type flex1">
+            <h3 class="product-property-type-title"><%= title %></h3>
 
-        <% elsif show_type == Spree::PROPERTY_SHOW_LEFT_NAME %>
+            <ul class="properties-list">
+              <% for product_property in @product_properties.hash_for(show_type)[title] %>
+                <li class="property">
+                  <%#= image_tag product_property.property.icon(:mini) %>
+                  <span class="property-label"><%= product_property.property.presentation %></span>
+                  <span class="pull-right"><%= product_property.value %></span>
+                </li>
+              <% end %>
+            </ul>
 
-          <table id="product-properties-<%=title.downcase.underscore %>" class="table-display" data-hook width="100%">
-            <tbody>
-            <% for product_property in @product_properties.hash_for(show_type)[title] %>
-              <% css_class = cycle('even', 'odd') %>
-              <tr class="<%= css_class %>">
-                <td><strong><%= product_property.property.presentation %></strong></td>
-              </tr>
-            <% end %>
-            </tbody>
-          </table>
-
-        <% elsif show_type == Spree::PROPERTY_SHOW_LEFT_BOTH %>
-
-          <table id="product-properties-<%=title.downcase.underscore %>" class="table-display" data-hook width="100%">
-            <tbody>
-            <% for product_property in @product_properties.hash_for(show_type)[title] %>
-              <% css_class = cycle('even', 'odd') %>
-              <tr class="<%= css_class %>">
-                <td><%= image_tag product_property.property.icon(:mini) %></td>
-                <td class="derecha"><%= product_property.value %></td>
-              </tr>
-            <% end %>
-            </tbody>
-          </table>
-
-        <% elsif show_type == Spree::PROPERTY_SHOW_LEFT_ICON %>
-
-          <ul class="thumbnails inline" data-hook>
-            <% @product_properties.hash_for(show_type)[title].each do |product_property| %>
-              <li class='tmb-all'>
-                <%= image_tag(product_property.property.icon(:mini), :border => 1) %>
-              </li>
-            <% end %>
-          </ul>
+          </div>
 
         <% end %>
-      <% end %>
+      </div>
+
     <% end %>
   <% end %>
 </div>
