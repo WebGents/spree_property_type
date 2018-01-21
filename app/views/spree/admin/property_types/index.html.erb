@@ -19,7 +19,7 @@
   <tr data-hook="property_type_header">
     <th><%= Spree.t(:name) %></th>
     <th><%= Spree.t(:presentation) %></th>
-    <th><%= Spree.t(:show) %></th>
+    <th><%= Spree.t(:description) %></th>
     <th class="actions"></th>
   </tr>
   </thead>
@@ -31,7 +31,7 @@
     <tr id="<%= spree_dom_id property_type %>" data-hook="property_type_row" class="<%= cycle('odd', 'even')%>">
       <td><%= property_type.name %></td>
       <td><%= property_type.presentation %></td>
-      <td><%= property_type.show_types.join('<br>').html_safe %></td>
+      <td><%= property_type.description %></td>
       <td class="actions">
         <%= link_to_edit property_type, :no_text => true %>
         <%= link_to_delete property_type, :no_text => true %>
